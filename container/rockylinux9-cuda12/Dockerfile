@@ -72,8 +72,8 @@ RUN curl -sSf -L https://sh.rustup.rs | bash -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Setup the workspace
-WORKDIR /data/Rust-CUDA
-RUN --mount=type=bind,source=rust-toolchain.toml,target=/data/Rust-CUDA/rust-toolchain.toml \
+WORKDIR /data/rust-cuda
+RUN --mount=type=bind,source=rust-toolchain.toml,target=/data/rust-cuda/rust-toolchain.toml \
     rustup show
 
 # Add nvvm to LD_LIBRARY_PATH.
