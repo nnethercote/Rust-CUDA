@@ -9,7 +9,7 @@ Before you can use the project to write GPU crates, you will need a couple of pr
 - [The CUDA SDK](https://developer.nvidia.com/cuda-downloads), version `11.2-11.8` (and the appropriate driver - [see cuda release notes](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html)).
 
   - We recently [added experimental support for the `12.x`
-    SDK](https://github.com/Rust-GPU/Rust-CUDA/issues/100), please file any issues you
+    SDK](https://github.com/Rust-GPU/rust-cuda/issues/100), please file any issues you
     see
 
   This is only for building GPU crates, to execute built PTX you only need CUDA `9+`.

@@ -89,7 +89,7 @@ use std::ffi::CString;
 #[unsafe(no_mangle)]
 pub fn __rustc_codegen_backend() -> Box<dyn CodegenBackend> {
     rustc_driver::install_ice_hook(
-        "https://github.com/Rust-GPU/Rust-CUDA/issues/new",
+        "https://github.com/Rust-GPU/rust-cuda/issues/new",
         |handler| {
             handler.handle().note(concat!(
                 "`rust-cuda` version `",

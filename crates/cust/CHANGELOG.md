@@ -145,7 +145,7 @@ it much easier to write multigpu code. The CUDA API is fully thread-safe except 
 - Added `MemoryAdvise::advise_read_mostly`.
 - Added `MemoryAdvise::preferred_location` and `MemoryAdvise::unset_preferred_location`.
 Note that advising APIs are only present on high end GPUs such as V100s.
-- `StreamFlags::NON_BLOCKING` has been temporarily disabled because of [soundness concerns](https://github.com/Rust-GPU/Rust-CUDA/issues/15).
+- `StreamFlags::NON_BLOCKING` has been temporarily disabled because of [soundness concerns](https://github.com/Rust-GPU/rust-cuda/issues/15).
 
 ## 0.2.0 - 11/26/21
 

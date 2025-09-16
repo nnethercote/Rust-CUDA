@@ -3,7 +3,7 @@ name = "optix"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/Rust-GPU/Rust-CUDA"
+repository = "https://github.com/Rust-GPU/rust-cuda"
 readme = "../../README.md"
 authors = ["Anders Langlands <anderslanglands@gmail.com>", "Riccardo D'Ambrosio <rdambrosio016@gmail.com>"]
 
