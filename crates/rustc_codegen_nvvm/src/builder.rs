@@ -215,7 +215,7 @@ macro_rules! math_builder_methods {
                             "Unimplemented 128-bit integer operation '{}' with {} arguments. \
                              This operation is not yet supported in Rust-CUDA. \
                              Consider using 64-bit integers or filing an issue at \
-                             https://github.com/Rust-GPU/Rust-CUDA/issues",
+                             https://github.com/Rust-GPU/rust-cuda/issues",
                             stringify!($name),
                             args_vec.len()
                         ));
