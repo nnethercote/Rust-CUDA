@@ -1,6 +1,6 @@
-# Compiletests for Rust-CUDA
+# Compiletests for Rust CUDA
 
-This directory contains compile tests for the Rust-CUDA project using the `compiletest` framework.
+This directory contains compile tests for the Rust CUDA project using the `compiletest` framework.
 
 The code in these tests is not executed. Tests check that the compiler compiles
 correctly. Tests in `dis/` verify correct PTX output.

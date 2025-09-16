@@ -1,4 +1,4 @@
-//! Example demonstrating GEMM (General Matrix Multiply) on CUDA using Rust-CUDA.
+//! Example demonstrating GEMM (General Matrix Multiply) on CUDA using Rust CUDA.
 //!
 //! This example benchmarks naive and tiled GEMM kernels as well as cuBLAS for various matrix sizes.
 //! It uses the `cust` crate for CUDA management and `ndarray` for host-side matrix operations.

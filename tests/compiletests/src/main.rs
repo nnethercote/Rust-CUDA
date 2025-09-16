@@ -65,7 +65,7 @@ fn main() {
 
     // HACK(eddyb) force `compiletest` to pass `ui/...` relative paths to `rustc`,
     // which should always end up being the same regardless of the path that the
-    // Rust-CUDA repo is checked out at (among other things, this avoids hardcoded
+    // Rust CUDA repo is checked out at (among other things, this avoids hardcoded
     // `compiletest` limits being hit by e.g. users with slightly longer paths).
     std::env::set_current_dir(tests_dir).unwrap();
     let tests_dir = PathBuf::from("");
