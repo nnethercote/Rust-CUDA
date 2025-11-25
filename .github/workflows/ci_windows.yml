@@ -23,23 +23,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: windows-latest
-            target: x86_64-pc-windows-msvc
-            cuda: "12.8.1"
-            linux-local-args: []
-            sub-packages:
-              [
-                "nvcc",
-                "nvrtc",
-                "nvrtc_dev",
-                "cuda_profiler_api",
-                "cudart",
-                "cublas",
-                "cublas_dev",
-                "curand",
-                "curand_dev",
-              ]
+        os: windows-latest
+        target: x86_64-pc-windows-msvc
+        cuda: ["12.8.1", "13.0.2"]
+        linux-local-args: []
+        sub-packages:
+          [
+            "nvcc",
+            "nvrtc",
+            "nvrtc_dev",
+            "cuda_profiler_api",
+            "cudart",
+            "cublas",
+            "cublas_dev",
+            "curand",
+            "curand_dev",
+          ]
 
     steps:
       - name: Checkout repository

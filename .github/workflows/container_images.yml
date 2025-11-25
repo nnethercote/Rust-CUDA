@@ -30,12 +30,12 @@ jobs:
           - runner: ubuntu-24.04-arm
             arch: arm64
         variance:
-          - name: Ubuntu-22.04/CUDA-12.8.1
-            image: "rust-gpu/rust-cuda-ubuntu22-cuda12"
-            dockerfile: ./container/ubuntu22-cuda12/Dockerfile
           - name: Ubuntu-24.04/CUDA-12.8.1
             image: "rust-gpu/rust-cuda-ubuntu24-cuda12"
             dockerfile: ./container/ubuntu24-cuda12/Dockerfile
+          - name: Ubuntu-24.04/CUDA-13.0.2
+            image: "rust-gpu/rust-cuda-ubuntu24-cuda13"
+            dockerfile: ./container/ubuntu24-cuda13/Dockerfile
           - name: RockyLinux-9/CUDA-12.8.1
             image: "rust-gpu/rust-cuda-rockylinux9-cuda12"
             dockerfile: ./container/rockylinux9-cuda12/Dockerfile
@@ -154,10 +154,10 @@ jobs:
       fail-fast: false
       matrix:
         variance:
-          - name: Ubuntu-22.04/CUDA-12.8.1
-            image: "rust-gpu/rust-cuda-ubuntu22-cuda12"
           - name: Ubuntu-24.04/CUDA-12.8.1
             image: "rust-gpu/rust-cuda-ubuntu24-cuda12"
+          - name: Ubuntu-24.04/CUDA-13.0.2
+            image: "rust-gpu/rust-cuda-ubuntu24-cuda13"
           - name: RockyLinux-9/CUDA-12.8.1
             image: "rust-gpu/rust-cuda-rockylinux9-cuda12"
     steps:
