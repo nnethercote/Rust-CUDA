@@ -576,29 +576,40 @@ fn setup_cuda_environment() {
     // Set library path to include CUDA NVVM libraries
     let lib_path_var = dylib_path_envvar();
 
-    // Try to find CUDA installation
-    let cuda_paths = vec![
-        "/usr/local/cuda/nvvm/lib64",
-        "/usr/local/cuda-12/nvvm/lib64",
-        "/usr/local/cuda-11/nvvm/lib64",
-        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.8\\nvvm\\lib\\x64",
-        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.0\\nvvm\\lib\\x64",
-        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.8\\nvvm\\lib\\x64",
-    ];
-
     let mut found_cuda_paths = Vec::new();
 
     // Check CUDA_PATH environment variable
     if let Ok(cuda_path) = env::var("CUDA_PATH") {
-        let nvvm_path = Path::new(&cuda_path).join("nvvm").join("lib64");
-        if nvvm_path.exists() {
-            found_cuda_paths.push(nvvm_path.to_string_lossy().to_string());
+        #[cfg(unix)]
+        {
+            let nvvm_path = Path::new(&cuda_path).join("nvvm").join("lib64");
+            if nvvm_path.exists() {
+                found_cuda_paths.push(nvvm_path.to_string_lossy().to_string());
+            }
         }
-        let nvvm_path_win = Path::new(&cuda_path).join("nvvm").join("lib").join("x64");
-        if nvvm_path_win.exists() {
-            found_cuda_paths.push(nvvm_path_win.to_string_lossy().to_string());
+        #[cfg(windows)]
+        {
+            let nvvm_path = Path::new(&cuda_path).join("nvvm").join("lib").join("x64");
+            if nvvm_path.exists() {
+                found_cuda_paths.push(nvvm_path.to_string_lossy().to_string());
+            }
         }
     }
+
+    // Try to find CUDA installation
+    #[cfg(unix)]
+    let cuda_paths = vec![
+        "/usr/local/cuda/nvvm/lib64",
+        "/usr/local/cuda-13/nvvm/lib64",
+        "/usr/local/cuda-12/nvvm/lib64",
+    ];
+    #[cfg(windows)]
+    let cuda_paths = vec![
+        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.0\\nvvm\\lib\\x64",
+        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9\\nvvm\\lib\\x64",
+        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.8\\nvvm\\lib\\x64",
+        "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.0\\nvvm\\lib\\x64",
+    ];
 
     // Check standard paths
     for path in &cuda_paths {
