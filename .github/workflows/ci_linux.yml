@@ -163,7 +163,6 @@ jobs:
               --exclude cust
           '
 
-      # Exclude cust_raw because it triggers hundreds of warnings.
       - name: Check documentation
         run: |
           docker exec "$CONTAINER_NAME" bash -lc 'set -euo pipefail
