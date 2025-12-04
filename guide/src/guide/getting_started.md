@@ -328,6 +328,9 @@ is recognized.
   `make`ing and running the [`deviceQuery`] sample. If all is well it will print various details
   about your GPU.
 
+A sample `.devcontainer.json` file is also included, configured for Ubuntu 24.04. Copy this to
+`.devcontainer/devcontainer.json` to make additional customizations.
+
 [`deviceQuery`]: https://github.com/NVIDIA/cuda-samples/tree/ba04faaf7328dbcc87bfc9acaf17f951ee5ddcf3/Samples/deviceQuery
 
 ## More examples
