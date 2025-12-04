@@ -53,4 +53,4 @@ If you set up the codegen backend for debug, it should give you a mapping from R
 
 Here is an example of the screen you should see:
 
-![](../../../assets/nsight.png)
+![](../../assets/nsight.png)
