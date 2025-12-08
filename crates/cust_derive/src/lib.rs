@@ -53,11 +53,11 @@ fn impl_device_copy(input: &DeriveInput, import: TokenStream) -> TokenStream {
 
     // Finally, generate the unsafe impl and the type-checking function.
     let generated_code = quote! {
-        unsafe impl#impl_generics #import for #input_type#type_generics #where_clause {}
+        unsafe impl #impl_generics #import for #input_type #type_generics #where_clause {}
 
         #[doc(hidden)]
         #[allow(all)]
-        fn #type_test_func_ident#impl_generics(value: &#input_type#type_generics) #where_clause {
+        fn #type_test_func_ident #impl_generics(value: &#input_type #type_generics) #where_clause {
             fn assert_impl<T: #import>() {}
             #check_types_code
         }
