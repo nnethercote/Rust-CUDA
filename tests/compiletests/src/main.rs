@@ -458,7 +458,9 @@ fn setup_windows_dll_path(codegen_backend_path: &Path) {
             } else {
                 format!("{dir_str}{separator}{existing_path}")
             };
-            env::set_var(lib_path_var, new_path);
+            unsafe {
+                env::set_var(lib_path_var, new_path);
+            }
         }
     }
 
@@ -477,24 +479,24 @@ fn setup_windows_dll_path(codegen_backend_path: &Path) {
     ];
 
     for llvm_config in &llvm_config_paths {
-        if let Ok(output) = Command::new(llvm_config).arg("--bindir").output() {
-            if output.status.success() {
-                if let Ok(bindir) = String::from_utf8(output.stdout) {
-                    let bindir = bindir.trim();
-                    let bindir_path = Path::new(bindir);
-                    if bindir_path.exists() {
-                        add_to_dylib_path(bindir_path);
-                        // Also add the lib directory which might contain DLLs
-                        if let Some(parent) = bindir_path.parent() {
-                            let libdir = parent.join("lib");
-                            if libdir.exists() {
-                                add_to_dylib_path(&libdir);
-                            }
+        if let Ok(output) = Command::new(llvm_config).arg("--bindir").output()
+            && output.status.success()
+        {
+            if let Ok(bindir) = String::from_utf8(output.stdout) {
+                let bindir = bindir.trim();
+                let bindir_path = Path::new(bindir);
+                if bindir_path.exists() {
+                    add_to_dylib_path(bindir_path);
+                    // Also add the lib directory which might contain DLLs
+                    if let Some(parent) = bindir_path.parent() {
+                        let libdir = parent.join("lib");
+                        if libdir.exists() {
+                            add_to_dylib_path(&libdir);
                         }
                     }
                 }
-                break;
             }
+            break;
         }
     }
 
@@ -629,6 +631,8 @@ fn setup_cuda_environment() {
             format!("{new_paths}{separator}{existing_path}")
         };
 
-        env::set_var(lib_path_var, new_lib_path);
+        unsafe {
+            env::set_var(lib_path_var, new_lib_path);
+        }
     }
 }

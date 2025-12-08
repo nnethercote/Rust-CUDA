@@ -746,8 +746,8 @@ impl NvvmProgram {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::str::FromStr;
     use NvvmArch::*;
+    use std::str::FromStr;
 
     #[test]
     fn nvvm_arch_capability_value() {
@@ -836,7 +836,9 @@ mod tests {
 
         assert_eq!(
             Compute70.all_target_features(),
-            vec![Compute50, Compute52, Compute53, Compute60, Compute61, Compute62, Compute70]
+            vec![
+                Compute50, Compute52, Compute53, Compute60, Compute61, Compute62, Compute70
+            ]
         );
 
         assert_eq!(

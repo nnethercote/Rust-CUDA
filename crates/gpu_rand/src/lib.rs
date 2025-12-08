@@ -5,7 +5,7 @@
 //! assembly. However, it is supposed to also work on the CPU, allowing you to reuse the same random states across CPU and GPU.
 //!
 //! A lot of the initial code is taken from the [rust-random project](https://github.com/rust-random) and modified to make it able to
-//! pass to the GPU, as well as cleaning up certain things and updating it to edition 2021.
+//! pass to the GPU, as well as cleaning up certain things and updating it to edition 2024.
 //! The following generators are implemented:
 //!
 
