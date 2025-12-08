@@ -1,7 +1,7 @@
 //! Functions and types for working with CUDA kernels.
 
 use std::marker::PhantomData;
-use std::mem::{transmute, MaybeUninit};
+use std::mem::{MaybeUninit, transmute};
 
 use cust_raw::driver_sys;
 use cust_raw::driver_sys::CUfunction;
