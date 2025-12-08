@@ -6,21 +6,21 @@ extern crate syn;
 
 use proc_macro2::{Ident, Span, TokenStream};
 use syn::{
-    parse_str, Data, DataEnum, DataStruct, DataUnion, DeriveInput, Field, Fields, Generics,
-    TypeParamBound,
+    Data, DataEnum, DataStruct, DataUnion, DeriveInput, Field, Fields, Generics, TypeParamBound,
+    parse_str,
 };
 
 #[proc_macro_derive(DeviceCopyCore)]
 pub fn device_copy_core(input: BaseTokenStream) -> BaseTokenStream {
     let ast = syn::parse(input).unwrap();
-    let gen = impl_device_copy(&ast, quote!(::cust_core::DeviceCopy));
-    BaseTokenStream::from(gen)
+    let code = impl_device_copy(&ast, quote!(::cust_core::DeviceCopy));
+    BaseTokenStream::from(code)
 }
 #[proc_macro_derive(DeviceCopy)]
 pub fn device_copy(input: BaseTokenStream) -> BaseTokenStream {
     let ast = syn::parse(input).unwrap();
-    let gen = impl_device_copy(&ast, quote!(::cust::memory::DeviceCopy));
-    BaseTokenStream::from(gen)
+    let code = impl_device_copy(&ast, quote!(::cust::memory::DeviceCopy));
+    BaseTokenStream::from(code)
 }
 
 use proc_macro::TokenStream as BaseTokenStream;

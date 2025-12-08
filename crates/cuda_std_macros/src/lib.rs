@@ -1,9 +1,9 @@
 use proc_macro::TokenStream;
 use proc_macro2::Span;
-use quote::{quote_spanned, ToTokens};
+use quote::{ToTokens, quote_spanned};
 use syn::{
-    parse::Parse, parse_macro_input, parse_quote, punctuated::Punctuated, spanned::Spanned, Error,
-    FnArg, Ident, ItemFn, ReturnType, Stmt, Token,
+    Error, FnArg, Ident, ItemFn, ReturnType, Stmt, Token, parse::Parse, parse_macro_input,
+    parse_quote, punctuated::Punctuated, spanned::Spanned,
 };
 
 /// Registers a function as a gpu kernel.
@@ -25,7 +25,7 @@ pub fn kernel(input: proc_macro::TokenStream, item: proc_macro::TokenStream) -> 
     let _ = parse_macro_input!(input as KernelHints);
     let input = parse_macro_input!(cloned as proc_macro2::TokenStream);
     let mut item = parse_macro_input!(item as ItemFn);
-    let no_mangle = parse_quote!(#[no_mangle]);
+    let no_mangle = parse_quote!(#[unsafe(no_mangle)]);
     item.attrs.push(no_mangle);
     let internal = parse_quote!(#[cfg_attr(target_arch="nvptx64", nvvm_internal::kernel(#input))]);
     item.attrs.push(internal);
