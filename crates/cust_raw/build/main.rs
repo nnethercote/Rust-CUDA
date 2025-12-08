@@ -154,6 +154,7 @@ fn create_cuda_driver_bindings(
         .size_t_is_usize(true)
         .layout_tests(true)
         .must_use_type("CUresult")
+        .wrap_unsafe_ops(true)
         // The CUDA docs have lots of malformed Doxygen directives, e.g.
         //
         //   \sa
@@ -217,6 +218,7 @@ fn create_cuda_runtime_bindings(
         .size_t_is_usize(true)
         .layout_tests(true)
         .must_use_type("cudaError_t")
+        .wrap_unsafe_ops(true)
         // See the comment on `generate_comments` in `create_cuda_runtime_bindings`.
         .generate_comments(false)
         .generate()
@@ -270,6 +272,7 @@ fn create_cublas_bindings(sdk: &cuda_sdk::CudaSdk, outdir: &path::Path, manifest
             .size_t_is_usize(true)
             .layout_tests(true)
             .must_use_type("cublasStatus_t")
+            .wrap_unsafe_ops(true)
             // See the comment on `generate_comments` in `create_cuda_runtime_bindings`.
             .generate_comments(false)
             .generate()
@@ -312,6 +315,7 @@ fn create_nvptx_compiler_bindings(
         .size_t_is_usize(true)
         .layout_tests(true)
         .must_use_type("nvPTXCompileResult")
+        .wrap_unsafe_ops(true)
         // See the comment on `generate_comments` in `create_cuda_runtime_bindings`.
         .generate_comments(false)
         .generate()
@@ -347,6 +351,7 @@ fn create_nvvm_bindings(sdk: &cuda_sdk::CudaSdk, outdir: &path::Path, manifest_d
         .size_t_is_usize(true)
         .layout_tests(true)
         .must_use_type("nvvmResult")
+        .wrap_unsafe_ops(true)
         // See the comment on `generate_comments` in `create_cuda_runtime_bindings`.
         .generate_comments(false)
         .generate()

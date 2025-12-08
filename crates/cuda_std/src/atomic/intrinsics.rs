@@ -1256,15 +1256,9 @@ atomic_fetch_op_4_reg! {
 
 #[allow(unused_macros)]
 macro_rules! negation {
-    (u32, $val:ident) => {{
-        -($val as i32)
-    }};
-    (u64, $val:ident) => {{
-        -($val as i64)
-    }};
-    ($type:ty, $val:ident) => {{
-        -$val
-    }};
+    (u32, $val:ident) => {{ -($val as i32) }};
+    (u64, $val:ident) => {{ -($val as i64) }};
+    ($type:ty, $val:ident) => {{ -$val }};
 }
 
 // atomic sub is a little special, nvcc implements it as an atomic add with a negated operand. PTX
