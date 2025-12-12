@@ -100,42 +100,42 @@ macro_rules! in_range {
 #[gpu_only]
 #[inline(always)]
 pub fn thread_idx_x() -> usize {
-    // The range is derived from the `block_idx_x` range.
+    // The range is derived from the `block_dim_x` range.
     in_range!(core::arch::nvptx::_thread_idx_x, 0..1024) as usize
 }
 
 #[gpu_only]
 #[inline(always)]
 pub fn thread_idx_y() -> usize {
-    // The range is derived from the `block_idx_y` range.
+    // The range is derived from the `block_dim_y` range.
     in_range!(core::arch::nvptx::_thread_idx_y, 0..1024) as usize
 }
 
 #[gpu_only]
 #[inline(always)]
 pub fn thread_idx_z() -> usize {
-    // The range is derived from the `block_idx_z` range.
+    // The range is derived from the `block_dim_z` range.
     in_range!(core::arch::nvptx::_thread_idx_z, 0..64) as usize
 }
 
 #[gpu_only]
 #[inline(always)]
 pub fn block_idx_x() -> usize {
-    // The range is derived from the `grid_idx_x` range.
+    // The range is derived from the `grid_dim_x` range.
     in_range!(core::arch::nvptx::_block_idx_x, 0..2147483647) as usize
 }
 
 #[gpu_only]
 #[inline(always)]
 pub fn block_idx_y() -> usize {
-    // The range is derived from the `grid_idx_y` range.
+    // The range is derived from the `grid_dim_y` range.
     in_range!(core::arch::nvptx::_block_idx_y, 0..65535) as usize
 }
 
 #[gpu_only]
 #[inline(always)]
 pub fn block_idx_z() -> usize {
-    // The range is derived from the `grid_idx_z` range.
+    // The range is derived from the `grid_dim_z` range.
     in_range!(core::arch::nvptx::_block_idx_z, 0..65535) as usize
 }
 
